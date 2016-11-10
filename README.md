@@ -99,6 +99,9 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
     LIBYUV：libyuv.a
 </br>
 </br>
+    13.用户可以自行替换ffmpeg、x264、fdkaac、rtmpdump、polarssl、libyuv目录下的文件进行组件版本更换
+</br>
+</br>
 四、当前源码版本
 </br>
 </br>
