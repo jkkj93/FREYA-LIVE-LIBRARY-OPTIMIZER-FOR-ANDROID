@@ -86,7 +86,6 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
 </br>
     12.如果freya_build_finished/平台名/lib目录中生成如下.a文件，则编译成功：
 </br>
-</br>
     FFMPEG：libavcodec.a、libavdevice.a、libavfilter.a、libavformat.a、libavresample.a、libavutil.a、libpostproc.a、libswresample.a、libswscale.a
 </br>
     X264：libx264.a
