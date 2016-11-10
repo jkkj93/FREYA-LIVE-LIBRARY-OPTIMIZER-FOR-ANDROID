@@ -5,7 +5,9 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
 针对ARM、ARMV7-A、ARM64-V8A、X86、X86_64、MIPS、MIPS64全平台极致优化。参阅了大量技术文档确定优化选项，并经过了实机测试，是目前最好的RTMP推流库编译简化及优化工具
 </br>
 </br>
-版本：1.0.1    更新日期：2016.11.10
+版本：1.0.1
+</br>
+更新日期：2016.11.10
 </br>
 </br>
 一、需准备的编译环境
