@@ -5,9 +5,9 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
 针对ARM、ARMV7-A、ARM64-V8A、X86、X86_64、MIPS、MIPS64全平台极致优化。参阅了大量技术文档确定优化选项，并经过了实机测试，是目前最好的RTMP推流库编译简化及优化工具
 </br>
 </br>
-版本：1.0.1
+版本：1.0.2
 </br>
-更新日期：2016.11.10
+更新日期：2017.01.11
 </br>
 </br>
 一、需准备的编译环境
@@ -107,13 +107,13 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
 四、当前源码版本
 </br>
 </br>
-    1.FFMPEG 3.2 RELEASE
+    1.FFMPEG 3.2.2 RELEASE
 </br>
 </br>
-    2.X264 2016.11.09 STABLE
+    2.X264 2017.01.10 STABLE
 </br>
 </br>
-    3.FDKAAC 0.1.4 2016.11.09 FROM MSTORSJO
+    3.FDKAAC 0.1.5 2017.01.11 FROM MSTORSJO
 </br>
 </br>
     4.LIBRTMP(RTMPDUMP) 2.4
@@ -122,7 +122,7 @@ FREYA LIVE LIBRARY OPTIMIZER FOR ANDROID是一套RTMP直播推流常用库的编
     5.POLARSSL 1.2.19
 </br>
 </br>
-    6.LIBYUV REV 1634
+    6.LIBYUV REV 1638
 </br>
 </br>
     会定期更新FFMPEG、FDKAAC、X264、LIBYUV的版本，并进行编译与实机推流测试，一般2-3个月更新一次
