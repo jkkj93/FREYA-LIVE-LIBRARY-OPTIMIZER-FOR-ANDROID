@@ -55,7 +55,9 @@ endif
 ifeq ($(TARGET_ARCH_ABI),mips)
     LOCAL_CFLAGS += -DLIBYUV_MSA
     LOCAL_SRC_FILES += \
-        source/row_msa.cc
+        source/row_msa.cc    \
+        source/scale_msa.cc  \
+        source/rotate_msa.cc
 endif
 
     LOCAL_CFLAGS += -DLIBYUV_NEON -DNDEBUG -static -fPIC -O3 -march=armv8-a -mtune=cortex-a57.cortex-a53 -ftree-vectorize -ffast-math

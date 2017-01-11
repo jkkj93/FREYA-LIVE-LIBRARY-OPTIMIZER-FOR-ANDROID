@@ -976,6 +976,14 @@ int I420ToRGB565Dither(const uint8* src_y,
     }
   }
 #endif
+#if defined(HAS_ARGBTORGB565DITHERROW_MSA)
+  if (TestCpuFlag(kCpuHasMSA)) {
+    ARGBToRGB565DitherRow = ARGBToRGB565DitherRow_Any_MSA;
+    if (IS_ALIGNED(width, 8)) {
+      ARGBToRGB565DitherRow = ARGBToRGB565DitherRow_MSA;
+    }
+  }
+#endif
   {
     // Allocate a row of argb.
     align_buffer_64(row_argb, width * 4);
@@ -1094,53 +1102,58 @@ int ConvertFromI420(const uint8* y,
     }
     // TODO(fbarchard): Add M420.
     // Triplanar formats
-    // TODO(fbarchard): halfstride instead of halfwidth
     case FOURCC_I420:
     case FOURCC_YV12: {
-      int halfwidth = (width + 1) / 2;
+      dst_sample_stride = dst_sample_stride ? dst_sample_stride : width;
+      int halfstride = (dst_sample_stride + 1) / 2;
       int halfheight = (height + 1) / 2;
       uint8* dst_u;
       uint8* dst_v;
       if (format == FOURCC_YV12) {
-        dst_v = dst_sample + width * height;
-        dst_u = dst_v + halfwidth * halfheight;
+        dst_v = dst_sample + dst_sample_stride * height;
+        dst_u = dst_v + halfstride * halfheight;
       } else {
-        dst_u = dst_sample + width * height;
-        dst_v = dst_u + halfwidth * halfheight;
+        dst_u = dst_sample + dst_sample_stride * height;
+        dst_v = dst_u + halfstride * halfheight;
       }
-      r = I420Copy(y, y_stride, u, u_stride, v, v_stride, dst_sample, width,
-                   dst_u, halfwidth, dst_v, halfwidth, width, height);
+      r = I420Copy(y, y_stride, u, u_stride, v, v_stride, dst_sample,
+                   dst_sample_stride, dst_u, halfstride, dst_v, halfstride,
+                   width, height);
       break;
     }
     case FOURCC_I422:
     case FOURCC_YV16: {
-      int halfwidth = (width + 1) / 2;
+      dst_sample_stride = dst_sample_stride ? dst_sample_stride : width;
+      int halfstride = (dst_sample_stride + 1) / 2;
       uint8* dst_u;
       uint8* dst_v;
       if (format == FOURCC_YV16) {
-        dst_v = dst_sample + width * height;
-        dst_u = dst_v + halfwidth * height;
+        dst_v = dst_sample + dst_sample_stride * height;
+        dst_u = dst_v + halfstride * height;
       } else {
-        dst_u = dst_sample + width * height;
-        dst_v = dst_u + halfwidth * height;
+        dst_u = dst_sample + dst_sample_stride * height;
+        dst_v = dst_u + halfstride * height;
       }
-      r = I420ToI422(y, y_stride, u, u_stride, v, v_stride, dst_sample, width,
-                     dst_u, halfwidth, dst_v, halfwidth, width, height);
+      r = I420ToI422(y, y_stride, u, u_stride, v, v_stride, dst_sample,
+                     dst_sample_stride, dst_u, halfstride, dst_v, halfstride,
+                     width, height);
       break;
     }
     case FOURCC_I444:
     case FOURCC_YV24: {
+      dst_sample_stride = dst_sample_stride ? dst_sample_stride : width;
       uint8* dst_u;
       uint8* dst_v;
       if (format == FOURCC_YV24) {
-        dst_v = dst_sample + width * height;
-        dst_u = dst_v + width * height;
+        dst_v = dst_sample + dst_sample_stride * height;
+        dst_u = dst_v + dst_sample_stride * height;
       } else {
-        dst_u = dst_sample + width * height;
-        dst_v = dst_u + width * height;
+        dst_u = dst_sample + dst_sample_stride * height;
+        dst_v = dst_u + dst_sample_stride * height;
       }
-      r = I420ToI444(y, y_stride, u, u_stride, v, v_stride, dst_sample, width,
-                     dst_u, width, dst_v, width, width, height);
+      r = I420ToI444(y, y_stride, u, u_stride, v, v_stride, dst_sample,
+                     dst_sample_stride, dst_u, dst_sample_stride, dst_v,
+                     dst_sample_stride, width, height);
       break;
     }
     // Formats not supported - MJPG, biplanar, some rgb formats.

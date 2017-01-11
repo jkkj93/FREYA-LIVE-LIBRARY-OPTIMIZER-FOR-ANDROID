@@ -55,7 +55,9 @@ endif
 ifeq ($(TARGET_ARCH_ABI),mips)
     LOCAL_CFLAGS += -DLIBYUV_MSA
     LOCAL_SRC_FILES += \
-        source/row_msa.cc
+        source/row_msa.cc    \
+        source/scale_msa.cc  \
+        source/rotate_msa.cc
 endif
 
     LOCAL_CFLAGS += -DNDEBUG -D__mips__ -D__mips_dsp -static -fPIC -O3 -march=mips32r2 -mtune=mips32r2 -mabi=32 -mhard-float -mfp64 -mmsa -mdspr2 -mmt -mmcu -ffast-math -ftree-vectorize
