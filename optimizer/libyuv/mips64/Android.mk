@@ -60,7 +60,7 @@ ifeq ($(TARGET_ARCH_ABI),mips)
         source/rotate_msa.cc
 endif
 
-    LOCAL_CFLAGS += -DNDEBUG -D__mips__ -D__mips_dsp -static -fPIC -O3 -march=mips64r6 -mtune=mips64r6 -mabi=64 -mhard-float -mfp64 -mmsa -mmt -mdspr2 -mmcu -ffast-math -ftree-vectorize
+    LOCAL_CFLAGS += -DNDEBUG -D__mips__ -D__mips_dsp -static -fPIC -O3 -march=mips64r6 -mtune=mips64r6 -mabi=64 -mhard-float -mfp64 -mmt -mmcu -ffast-math -ftree-vectorize
 
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
