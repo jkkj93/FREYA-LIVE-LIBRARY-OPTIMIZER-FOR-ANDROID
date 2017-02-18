@@ -5,7 +5,7 @@
 针对ARM、ARMV7-A、ARM64-V8A、X86、X86_64、MIPS、MIPS64全平台极致优化。参阅了大量技术文档确定优化选项，并经过了实机测试，是目前最好的RTMP推流库编译简化及优化工具
 </br>
 </br>
-联动项目：[FREYA STREAM CASTER SDK FOR ANDROID](https://github.com/jkkj93/FREYA-STREAM-CASTER-SDK-FOR-ANDROID) -- 优秀的免费安卓RTMP推流SDK
+联动项目：[FREYA STREAM CASTER SDK FOR ANDROID](https://github.com/jkkj93/FREYA-STREAM-CASTER-SDK-FOR-ANDROID) -- 优秀免费且JNI层开源的安卓RTMP推流SDK
 </br>
 </br>
 版本：1.0.2
